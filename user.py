@@ -137,8 +137,25 @@ for event in longpoll.listen():
                 
                 if msg in [answ8]:
                     sender1(id, send8)
+		
+		if msg in ["онлайн", "кто онлайн"]:
+                    f = vk.messages.getConversationMembers(peer_id=id, fields="online")
+                    al = -1
+                    sw_all = ""
+                    try:
+                        while True:
+                            al = al + 1
+                            sw1 = f["profiles"][al]["first_name"]
+                            sw2 = f["profiles"][al]["last_name"]
+                            sw3 = f["profiles"][al]["id"]
+                            sw4 = f["profiles"][al]["online"]
+                            if sw4 == 1:
+                                sw_al = "[id" + str(sw3) + "|" + sw1 + " " + sw2 + "]"
+                                sw_all += "<br>" + sw_al
+                    except:
+                        sender1(id, 'Пользователи онлайн:' + sw_all)
 
-                if msg in ['поцеловать']:
+                if "поцеловать" in event.text.lower():
                     if user == 400484262:
                         kiss_r_u = vk.users.get(user_ids='400484262', name_case='nom')
                         kiss_r_n_1 = kiss_r_u[0]["first_name"]
@@ -159,7 +176,7 @@ for event in longpoll.listen():
 
                         sender1(id, kiss_n_f_n + kiss_sex_s + kiss_n_f_n1 + ' 😍❤')
 
-                if msg in ['обнять']:
+                if "обнять" in event.text.lower():
                     if user == 400484262:
                         user = event.user_id
                         kiss_r_u = vk.users.get(user_ids='400484262', name_case='nom')
