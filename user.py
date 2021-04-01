@@ -305,6 +305,9 @@ for event in longpoll.listen():
                             answ_m = str(msg.split(' ', 2)[2].split('|')[0])
                             send_m = str(msgl.split(' ', 2)[2].split('|')[1])
                             sender(id, "Готово!<br>Вопрос: " + str(answ_m) + "<br>Ответ: " + str(send_m))
+			
+		if msg in [answ_m]:
+                    sender(id, send_m)
 
             if event.to_me:
                 msg = event.text.lower()
