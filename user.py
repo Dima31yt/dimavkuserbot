@@ -308,6 +308,20 @@ for event in longpoll.listen():
 			
 		if msg in [answ_m]:
                     sender(id, send_m)
+		
+		if msg in ['чс+']:
+                    chs_r_u = vk.users.get(user_ids=id, name_case='nom', fields='sex')
+                    chs_r_n_1 = chs_r_u[0]["first_name"]
+                    chs_r_n_2 = chs_r_u[0]["last_name"]
+                    chs_sex = chs_r_u[0]["sex"]
+                    chs_r_n_f = chs_r_n_1 + ' ' + chs_r_n_2
+                    chs_n_f_n = '[id' + str(id) + '|' + chs_r_n_f + ']'
+                    if int(chs_sex) == 1:
+                        chs_sex_s = ' добавлена '
+                    if int(chs_sex) == 2:
+                        chs_sex_s = ' добавлен '
+                    sender(id, chs_n_f_n + chs_sex_s + 'в чёрный список')
+                    vk.account.ban(owner_id=id)
 
             if event.to_me:
                 msg = event.text.lower()
