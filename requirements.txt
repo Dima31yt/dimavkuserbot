@@ -1,3 +1,4 @@
 vk_api
 wikipedia
 bs4
+lxml
