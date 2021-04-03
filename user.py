@@ -318,7 +318,7 @@ for event in longpoll.listen():
                     quotes = soup.find_all('meta', property="og:image")
                     a = str(quotes[0]).split('"')[1]
 
-                    filename = "files/" + os.path.basename(a).split('?')[0] + ".jpg"
+                    filename = "\\app\\files\\" + os.path.basename(a).split('?')[0] + ".jpg"
                     if(os.path.isfile(filename)): os.remove(filename)
                     r = requests.get(a)
                     with open(filename, 'wb') as f:
@@ -337,7 +337,7 @@ for event in longpoll.listen():
                     quotes = soup.find_all('meta', property="og:image")
                     a = str(quotes[0]).split('"')[1]
 
-                    filename = "/app/files/" + os.path.basename(a).split('?')[0] + ".jpg"
+                    filename = "\\app\\files\\" + os.path.basename(a).split('?')[0] + ".jpg"
                     if(os.path.isfile(filename)): os.remove(filename)
                     r = requests.get(a)
                     with open(filename, 'wb') as f:
